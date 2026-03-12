@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply font-sans;
+    }
+}
+
+@layer components {
+    .btn-orange {
+        @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 shadow-md;
+    }
+    .btn-outline-orange {
+        @apply border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold py-2 px-4 rounded-lg transition duration-200;
+    }
+    .card-orange {
+        @apply border border-orange-200 dark:border-orange-800 rounded-xl shadow-sm;
+    }
+    .input-field {
+        @apply w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-orange-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition;
+    }
+    .sidebar-link {
+        @apply flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-orange-900/30 hover:text-orange-600 dark:hover:text-orange-400 transition duration-150;
+    }
+    .sidebar-link.active {
+        @apply bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 font-semibold;
+    }
+}
