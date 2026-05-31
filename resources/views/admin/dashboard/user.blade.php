@@ -119,7 +119,7 @@
                             'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400') }}">
                         {{ $inspection->statut === 'conforme' ? 'Conforme' : ($inspection->statut === 'non_conforme' ? 'Non conforme' : 'Attente') }}
                     </span>
-                    <a href="{{ route('user.inspections.show', $inspection->id) }}" class="p-1 rounded text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition">
+                    <a href="{{ route('user.inspections') }}" class="p-1 rounded text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-900/30 transition">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 </div>

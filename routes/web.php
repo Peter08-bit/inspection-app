@@ -34,3 +34,28 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::get('/materiels', [UserDashboardController::class, 'materiels'])->name('materiels');
     Route::get('/inspections', [UserDashboardController::class, 'inspections'])->name('inspections');
 });
+
+// Routes Chat
+Route::middleware('auth')->prefix('chat')->name('chat.')->group(function () {
+    Route::get('/groupe', [App\Http\Controllers\MessageController::class, 'groupChat'])->name('group');
+    Route::post('/groupe/envoyer', [App\Http\Controllers\MessageController::class, 'sendGroup'])->name('group.send');
+    Route::get('/prive/{user}', [App\Http\Controllers\MessageController::class, 'privateChat'])->name('private');
+    Route::post('/prive/{user}/envoyer', [App\Http\Controllers\MessageController::class, 'sendPrivate'])->name('private.send');
+    Route::get('/non-lus', [App\Http\Controllers\MessageController::class, 'unreadCount'])->name('unread');
+    Route::get('/users-statut', [App\Http\Controllers\MessageController::class, 'usersStatus'])->name('chat.users.status');
+    Route::get('/messages/prive/{user}', [App\Http\Controllers\MessageController::class, 'getPrivateMessages'])->name('chat.messages.private');
+    Route::get('/messages/groupe', [App\Http\Controllers\MessageController::class, 'getGroupMessages'])->name('chat.messages.group');
+    Route::post('/marquer-lu/{user}', [App\Http\Controllers\MessageController::class, 'markAsRead'])->name('chat.mark.read');
+});
+
+Route::middleware('auth')->prefix('chat')->name('chat.')->group(function () {
+    Route::get('/groupe', [App\Http\Controllers\MessageController::class, 'groupChat'])->name('group');
+    Route::post('/groupe/envoyer', [App\Http\Controllers\MessageController::class, 'sendGroup'])->name('group.send');
+    Route::get('/prive/{user}', [App\Http\Controllers\MessageController::class, 'privateChat'])->name('private');
+    Route::post('/prive/{user}/envoyer', [App\Http\Controllers\MessageController::class, 'sendPrivate'])->name('private.send');
+    Route::get('/non-lus', [App\Http\Controllers\MessageController::class, 'unreadCount'])->name('unread');
+    Route::get('/users-statut', [App\Http\Controllers\MessageController::class, 'usersStatus'])->name('users.status');
+    Route::get('/messages/prive/{user}', [App\Http\Controllers\MessageController::class, 'getPrivateMessages'])->name('messages.private');
+    Route::get('/messages/groupe', [App\Http\Controllers\MessageController::class, 'getGroupMessages'])->name('messages.group');
+    Route::post('/marquer-lu/{user}', [App\Http\Controllers\MessageController::class, 'markAsRead'])->name('mark.read');
+});

@@ -1,0 +1,31 @@
+runtime: php83
+env: standard
+
+instance_class: F2
+
+runtime_config:
+  document_root: public
+
+automatic_scaling:
+  max_instances: 5
+
+env_variables:
+  APP_NAME: "GIM Pro"
+  APP_ENV: production
+  APP_DEBUG: "true"
+  APP_URL: "https://advin-inspection-app-2026.ew.r.appspot.com"
+  APP_KEY: "base64:L1YEJyZ8l2HmX4or169pyS9SL4fmuFqp09W/kvTs6PI="
+  DB_CONNECTION: mysql
+  DB_HOST: "34.78.144.165"
+  DB_PORT: "3306"
+  DB_DATABASE: inspection_db
+  DB_USERNAME: root
+  DB_PASSWORD: "Inspection@2026"
+  CACHE_STORE: file
+  SESSION_DRIVER: file
+  LOG_CHANNEL: stderr
+
+handlers:
+  - url: /.*
+    script: auto
+    secure: always

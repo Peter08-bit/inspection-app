@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inspection-app
+  labels:
+    app: inspection-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inspection-app
+  template:
+    metadata:
+      labels:
+        app: inspection-app
+    spec:
+      containers:
+      - name: inspection-app
+        image: gcr.io/advin-inspection-app-2026/inspection-app:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: APP_ENV
+          value: "production"
+        - name: APP_DEBUG
+          value: "false"
+        - name: APP_KEY
+          value: "base64:L1YEJyZ8l2HmX4or169pyS9SL4fmuFqp09W/kvTs6PI="
+        - name: APP_URL
+          value: "http://inspection-app"
+        - name: DB_CONNECTION
+          value: "mysql"
+        - name: DB_HOST
+          value: "34.78.144.165"
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_DATABASE
+          value: "inspection_db"
+        - name: DB_USERNAME
+          value: "root"
+        - name: DB_PASSWORD
+          value: "Inspection@2026"
+        - name: CACHE_STORE
+          value: "file"
+        - name: SESSION_DRIVER
+          value: "file"
+        - name: LOG_CHANNEL
+          value: "stderr"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "250m"
